@@ -3,10 +3,29 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import FotoProduk from "../components/foto-produk";
 import Pengiriman from "../components/pilihan-pengiriman";
+import { Dropdown, Rating } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import { useParams } from "react-router-dom";
 import { allproduk } from "../data/index";
+
+const friendOptions = [
+  {
+    key: "Terbaru",
+    text: "Terbaru",
+    value: "Terbaru",
+  },
+  {
+    key: "Rating Tertinggi",
+    text: "Rating Tertinggi",
+    value: "Rating Tertinggi",
+  },
+  {
+    key: "Rating Terendah",
+    text: "Rating Terendah",
+    value: "Rating Terendah",
+  },
+];
 
 const produk = () => {
   const { produkId } = useParams();
@@ -348,8 +367,61 @@ const produk = () => {
                   </div>
                 </div>
               </div>
+
               <div className="w-2/3 h-auto">
-                <div>carousel foto</div>
+                {/* Header Ulasan */}
+                <div className="flex items-center justify-between w-full">
+                  <div>
+                    <p className="font-bold">ULASAN PILIHAN</p>
+                    <p className="-mt-3 font-semibold text-gray-500">
+                      Menampilkan 10 dari 49 ulasan
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-4 p-4">
+                    <p className="font-semibold">Urutan</p>
+                    <Dropdown
+                      className="mb-2"
+                      selection
+                      defaultValue="Terbaru"
+                      options={friendOptions}
+                    />
+                  </div>
+                </div>
+
+                {/* Tampilkan Ulasan */}
+                <div className="p-2 bg-blue-">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Rating
+                      defaultRating={3}
+                      icon="star"
+                      maxRating={5}
+                      disabled
+                    />
+                    <p className="font-semibold text-gray-600">
+                      1 Hari yang lalu
+                    </p>
+                  </div>
+
+                  {/* Detail Ulasan */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <img
+                      src="../assets/react.svg"
+                      className="w-10 h-10 rounded-full"
+                      alt="nama_user"
+                    />
+                    <p className="text-xl font-bold">Nama</p>
+                  </div>
+
+                  {/* Isi Ulasan */}
+                  <div>
+                    <p className="mb-4 font-semibold">
+                      Yg dikirim tidak sesuai warna nya. Pesen hitam dikirim
+                      biru
+                    </p>
+                  </div>
+
+                  <hr className="h-px my-4 bg-gray-300 border-0" />
+                </div>
               </div>
             </div>
           </div>
@@ -429,6 +501,7 @@ const produk = () => {
           </div>
         </div>
       </div>
+
       <Footer />
     </>
   );
