@@ -24,7 +24,7 @@ const cardPromo = ({ id, title, images, price, discount, rating, count }) => {
         {loading ? (
           <div className="flex justify-center w-full h-32 p-3 bg-gray-300 rounded-t-lg sm:p-5 sm:h-36">
             <svg
-              class="w- animate-pulse h-28 text-gray-200"
+              className="text-gray-200 w- animate-pulse h-28"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -47,7 +47,7 @@ const cardPromo = ({ id, title, images, price, discount, rating, count }) => {
           {/* Tittle */}
           <div>
             {loading ? (
-              <div class="h-2.5 mt-4 bg-gray-200 rounded-full  w-24 sm:w-28 mb-4"></div>
+              <div className="h-2.5 mt-4 bg-gray-200 rounded-full  w-24 sm:w-28 mb-4"></div>
             ) : (
               <h5 className="mb-1 text-sm font-bold tracking-tight text-gray-900 sm:text-base line-clamp-2 dark:text-white">
                 {title}
@@ -58,7 +58,7 @@ const cardPromo = ({ id, title, images, price, discount, rating, count }) => {
           {/* Harga */}
           <div>
             {loading ? (
-              <div class="h-2.5  bg-gray-200 rounded-full  w-20 mb-1"></div>
+              <div className="h-2.5  bg-gray-200 rounded-full  w-20 mb-1"></div>
             ) : (
               <div className="flex items-center">
                 <label className="pr-1 text-xs font-normal text-gray-500 line-through ">
@@ -71,7 +71,7 @@ const cardPromo = ({ id, title, images, price, discount, rating, count }) => {
             )}
 
             {loading ? (
-              <div class="h-2.5  bg-gray-200 rounded-full  w-24 mb-4"></div>
+              <div className="h-2.5  bg-gray-200 rounded-full  w-24 mb-4"></div>
             ) : (
               <p className="text-xs font-semibold text-gray-700 sm:text-sm">
                 Rp {(price - (price * discount) / 100).toLocaleString("id-ID")}
@@ -80,7 +80,7 @@ const cardPromo = ({ id, title, images, price, discount, rating, count }) => {
 
             {/* Rating */}
             {loading ? (
-              <div class="h-2.5  bg-gray-200 rounded-full  w-28 sm:w-32"></div>
+              <div className="h-2.5  bg-gray-200 rounded-full  w-28 sm:w-32"></div>
             ) : (
               <div className="flex items-center">
                 <svg

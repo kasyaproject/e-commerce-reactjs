@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { Dropdown } from "semantic-ui-react";
+import { Link, useLocation } from "react-router-dom";
+
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import FotoProduk from "../components/foto-produk";
 import Pengiriman from "../components/pilihan-pengiriman";
-import { Dropdown, Rating } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import CardProduk from "../components/card-produk";
+import CardAksi from "../components/card-aksi";
+import CardUlasan from "../components/card-ulasan";
 
-import { useParams } from "react-router-dom";
-import { allproduk } from "../data/index";
+import { allproduk, ulasanproduk } from "../data/index";
 
 const friendOptions = [
   {
@@ -18,45 +21,85 @@ const friendOptions = [
   {
     key: "Rating Tertinggi",
     text: "Rating Tertinggi",
-    value: "Rating Tertinggi",
+    value: "Tertinggi",
   },
   {
     key: "Rating Terendah",
     text: "Rating Terendah",
-    value: "Rating Terendah",
+    value: "Terendah",
   },
 ];
 
 const produk = () => {
-  const { produkId } = useParams();
-  const [isLiked, setIsLiked] = useState();
-  // State untuk menyimpan nilai jumlah
-  const [quantity, setQuantity] = useState(1);
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const produkId = query.get("id");
 
   // Ambil data berdasarkan id
   const produk = allproduk.find((item) => item.id === produkId);
 
-  // Fungsi untuk menambah jumlah
-  const increaseQuantity = () => {
-    setQuantity((prev) => prev + 1);
+  const kategori = produk.kategori;
+  // Filter data berdasarkan kategori yang sama dan selain yang di lihat
+  const produkTerkait = allproduk.filter(
+    (item) => item.kategori === kategori && item.id !== produkId
+  );
+  // Jika produk lainnya kurang dari 5
+  let produkLainnya = [];
+  const jumlahProdukTerkait = produkTerkait.length;
+
+  if (jumlahProdukTerkait % 5 !== 0 || jumlahProdukTerkait === 0) {
+    produkLainnya = allproduk
+      .sort((a, b) => b.count - a.count) // Sort by 'count' in descending order
+      .slice(0, 10 - jumlahProdukTerkait);
+  } else {
+    // If not enough related products, take the top 5 based on count
+    produkLainnya = allproduk.sort((a, b) => b.count - a.count).slice(0, 0);
+  }
+  const hasilProduk = [...produkTerkait, ...produkLainnya];
+
+  console.log(produk);
+
+  // Filter Berdasarkan rating
+  const [selectedRatings, setSelectedRatings] = useState([]);
+  const [sortOrder, setSortOrder] = useState("Terbaru");
+
+  // Function to handle checkbox changes
+  const handleCheckboxChange = (rating) => {
+    setSelectedRatings(
+      (prev) =>
+        prev.includes(rating)
+          ? prev.filter((r) => r !== rating) // Deselect if already included
+          : [...prev, rating] // Select if not included
+    );
   };
 
-  // Fungsi untuk mengurangi jumlah
-  const decreaseQuantity = () => {
-    setQuantity((prev) => (prev > 1 ? prev - 1 : 1)); // Tidak kurang dari 1
-  };
+  // Filter reviews based on selected ratings
+  const filteredReviews = ulasanproduk.filter((review) =>
+    selectedRatings.length ? selectedRatings.includes(review.rating) : true
+  );
 
-  // Handle button wishlist
-  const handleLike = () => {
-    setIsLiked((prev) => !prev); // Toggle isLiked state
-  };
+  // Sort filtered reviews based on selected sort order
+  const sortedReviews = filteredReviews.sort((a, b) => {
+    if (sortOrder === "Terbaru") {
+      return new Date(b.date) - new Date(a.date); // Sort by date descending
+    }
+    if (sortOrder === "Terendah") {
+      return a.rating - b.rating; // Sort by rating ascending
+    }
+    if (sortOrder === "Tertinggi") {
+      return b.rating - a.rating; // Sort by rating descending
+    }
+    return 0; // No sort
+  });
+
+  console.log(selectedRatings);
 
   return (
     <>
       <div className="flex flex-col items-center w-full min-h-screen justify-">
         <Navbar />
 
-        <div className="w-[80rem] p-2 ">
+        <div className="w-[80rem] p-2 sm:block hidden">
           {/* Breadcrum */}
           <div className="">
             <nav className="flex" aria-label="Breadcrumb">
@@ -119,11 +162,11 @@ const produk = () => {
         </div>
 
         {/* Main Body */}
-        <div className="flex justify-center w-full h-auto  sm:max-w-[80rem]">
+        <div className="flex justify-center w-full h-auto sm:max-w-[80rem]">
           <div className="w-full p-2 ">
-            <div className="flex w-full bg-blue-">
+            <div className="flex flex-col w-full sm:flex-row bg-blue-">
               {/* foto */}
-              <div className="sticky w-[40%] bg-blue- top-24 h-max">
+              <div className="sm:sticky w-full sm:w-[40%] bg-blue- top-24 h-max">
                 {/* Foto */}
                 <div className="sticky w-full p-2 bg-green- h-max top-24">
                   <FotoProduk
@@ -133,9 +176,10 @@ const produk = () => {
                   />
                 </div>
               </div>
+
               {/* description */}
-              <div className="w-[60%] h-auto">
-                <div className="p-2 px-8 bg-yellow-">
+              <div className="w-full sm:w-[60%] h-auto">
+                <div className="p-2 sm:px-8 bg-yellow-">
                   {/* Judul */}
                   <h2>{produk.title}</h2>
 
@@ -207,11 +251,11 @@ const produk = () => {
 
             <hr className="h-px my-4 bg-gray-300 border-0" />
 
-            <div className="flex w-full p-2 mt-10">
-              <div className="sticky w-1/3 h-max top-24">
+            <div className="w-full p-2 mt-10 sm:flex">
+              <div className="w-full sm:sticky sm:w-1/3 h-max top-24">
                 <p className="text-xl font-bold">ULASAN PEMBELI</p>
 
-                <div className="flex items-center justify-center w-full bg-blue-">
+                <div className="flex items-center w-full sm:justify-center bg-blue-">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="orange"
@@ -231,273 +275,90 @@ const produk = () => {
                   </p>
                 </div>
 
-                <p className="mt-4 font-semibold text-center text-gray-500">
+                <p className="mt-4 font-semibold text-gray-500 sm:text-center">
                   {produk.ratingcount} rating . {produk.count} terjual
                 </p>
 
-                <div className="flex justify-center w-full px-2 py-4 ">
+                <div className="justify-center hidden w-full px-2 py-4 sm:flex ">
                   <div className="w-4/5 border-2 rounded-lg">
                     <p className="px-4 pt-4 text-xl font-semibold">Rating</p>
 
-                    {/* Bintang 5 */}
-                    <div className="flex items-center px-5 mb-4">
-                      <input
-                        id="vue-checkbox-list"
-                        type="checkbox"
-                        value=""
-                        class="w-6 h-6 mr-4 text-blue-600 bg-gray-100 border-gray-300 rounded ring-0"
-                      />
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="orange"
-                        viewBox="0 0 24 24"
-                        stroke="orange"
-                        className="w-5 h-5 mr-2 bg-yellow-"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"
+                    {/* FIlter rating */}
+                    {[5, 4, 3, 2, 1].map((rating) => (
+                      <div className="flex items-center px-5 mb-4" key={rating}>
+                        <input
+                          type="checkbox"
+                          checked={selectedRatings.includes(rating)}
+                          onChange={() => handleCheckboxChange(rating)}
+                          className="w-6 h-6 mr-4 text-blue-600 bg-gray-100 border-gray-300 rounded ring-0"
                         />
-                      </svg>
-
-                      <p className="text-lg font-semibold">5</p>
-                    </div>
-                    {/* Bintang 4 */}
-                    <div className="flex items-center px-5 mb-4">
-                      <input
-                        id="vue-checkbox-list"
-                        type="checkbox"
-                        value=""
-                        class="w-6 h-6 mr-4 text-blue-600 bg-gray-100 border-gray-300 rounded ring-0"
-                      />
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="orange"
-                        viewBox="0 0 24 24"
-                        stroke="orange"
-                        className="w-5 h-5 mr-2 bg-yellow-"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"
-                        />
-                      </svg>
-
-                      <p className="text-lg font-semibold">4</p>
-                    </div>
-                    {/* Bintang 3 */}
-                    <div className="flex items-center px-5 mb-4">
-                      <input
-                        id="vue-checkbox-list"
-                        type="checkbox"
-                        value=""
-                        class="w-6 h-6 mr-4 text-blue-600 bg-gray-100 border-gray-300 rounded ring-0"
-                      />
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="orange"
-                        viewBox="0 0 24 24"
-                        stroke="orange"
-                        className="w-5 h-5 mr-2 bg-yellow-"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"
-                        />
-                      </svg>
-
-                      <p className="text-lg font-semibold">3</p>
-                    </div>
-                    {/* Bintang 2 */}
-                    <div className="flex items-center px-5 mb-4">
-                      <input
-                        id="vue-checkbox-list"
-                        type="checkbox"
-                        value=""
-                        class="w-6 h-6 mr-4 text-blue-600 bg-gray-100 border-gray-300 rounded ring-0"
-                      />
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="orange"
-                        viewBox="0 0 24 24"
-                        stroke="orange"
-                        className="w-5 h-5 mr-2 bg-yellow-"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"
-                        />
-                      </svg>
-
-                      <p className="text-lg font-semibold">2</p>
-                    </div>
-                    {/* Bintang 1 */}
-                    <div className="flex items-center px-5 mb-4">
-                      <input
-                        id="vue-checkbox-list"
-                        type="checkbox"
-                        value=""
-                        class="w-6 h-6 mr-4 text-blue-600 bg-gray-100 border-gray-300 rounded ring-0"
-                      />
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="orange"
-                        viewBox="0 0 24 24"
-                        stroke="orange"
-                        className="w-5 h-5 mr-2 bg-yellow-"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"
-                        />
-                      </svg>
-
-                      <p className="text-lg font-semibold">1</p>
-                    </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="orange"
+                          viewBox="0 0 24 24"
+                          stroke="orange"
+                          className="w-5 h-5 mr-2"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"
+                          />
+                        </svg>
+                        <p className="text-lg font-semibold">{rating}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              <div className="w-2/3 h-auto">
+              <div className="w-full h-auto sm:w-2/3">
                 {/* Header Ulasan */}
                 <div className="flex items-center justify-between w-full">
-                  <div>
+                  <div className="mb-6">
                     <p className="font-bold">ULASAN PILIHAN</p>
                     <p className="-mt-3 font-semibold text-gray-500">
                       Menampilkan 10 dari 49 ulasan
                     </p>
                   </div>
-                  <div className="flex items-center gap-4 p-4">
+                  <div className="items-center hidden gap-4 p-4 sm:flex">
                     <p className="font-semibold">Urutan</p>
                     <Dropdown
                       className="mb-2"
                       selection
                       defaultValue="Terbaru"
                       options={friendOptions}
+                      onChange={(e, { value }) => setSortOrder(value)}
                     />
                   </div>
                 </div>
 
                 {/* Tampilkan Ulasan */}
-                <div className="p-2 bg-blue-">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Rating
-                      defaultRating={3}
-                      icon="star"
-                      maxRating={5}
-                      disabled
-                    />
-                    <p className="font-semibold text-gray-600">
-                      1 Hari yang lalu
-                    </p>
-                  </div>
-
-                  {/* Detail Ulasan */}
-                  <div className="flex items-center gap-2 mb-2">
-                    <img
-                      src="../assets/react.svg"
-                      className="w-10 h-10 rounded-full"
-                      alt="nama_user"
-                    />
-                    <p className="text-xl font-bold">Nama</p>
-                  </div>
-
-                  {/* Isi Ulasan */}
-                  <div>
-                    <p className="mb-4 font-semibold">
-                      Yg dikirim tidak sesuai warna nya. Pesen hitam dikirim
-                      biru
-                    </p>
-                  </div>
-
-                  <hr className="h-px my-4 bg-gray-300 border-0" />
-                </div>
+                {/* <CardUlasan /> */}
+                {sortedReviews.map((review) => (
+                  <CardUlasan key={review.id} review={review} />
+                ))}
               </div>
             </div>
+
+            <hr className="h-px my-4 bg-gray-300 border-0" />
           </div>
 
-          <div className="sticky flex justify-center w-1/3 p-2 px-10 top-24 h-max">
+          <div className="sticky justify-center hidden w-1/3 p-2 px-10 sm:flex top-24 h-max">
             {/* AKsi */}
-            <div className="w-full px-4 py-2 border-2 rounded-2xl">
-              <p className="text-xl font-semibold">Atur Jumlah Pembelian</p>
+            <CardAksi key={produk.id} {...produk} />
+          </div>
+        </div>
 
-              <div className="flex items-center gap-2 mb-4">
-                <div className="relative w-full px-1 py-1 border-2 rounded-md">
-                  <div>
-                    <div className="font-bold text-center">{quantity}</div>
-                    <input
-                      type="number"
-                      value={quantity}
-                      className="hidden" // Menggunakan hidden untuk input
-                      readOnly // Menjadikan input hanya untuk dibaca
-                    />
-                  </div>
-
-                  <div className="absolute top-0 right-0 z-10 p-0.5">
-                    <button
-                      className="px-1.5 font-semibold py-0.5 rounded-lg border-2 border-white hover:border-blue-500"
-                      onClick={increaseQuantity}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div className="absolute top-0 left-0 z-10 p-0.5">
-                    <button
-                      className="px-2 font-semibold py-0.5 rounded-lg border-2 border-white hover:border-blue-500"
-                      onClick={decreaseQuantity}
-                    >
-                      -
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex items-center w-full">
-                  <p>
-                    Total Stock :{" "}
-                    <label className="font-semibold text-orange-400">
-                      Sisa 400
-                    </label>
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-end justify-between mb-4">
-                <div className="">
-                  <p className="font-semibold text-gray-500">Subtotal</p>
-                </div>
-                <div className="text-right">
-                  <p className="font-semibold text-gray-500 line-through">
-                    Rp1.799.000
-                  </p>
-                  <p className="-mt-4 text-xl font-bold ">Rp1.249.000</p>
-                </div>
-              </div>
-
-              <button className="w-full py-3 mb-2 font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-700">
-                Beli
-              </button>
-
-              <button className="w-full py-3 mb-2 font-semibold text-blue-600 border-2 border-blue-600 bg-gray-50 rounded-xl hover:bg-gray-100">
-                Masukan Keranjang
-              </button>
-
-              <div className="flex items-center justify-end mt-3 text-sm">
-                <button onClick={handleLike}>
-                  {isLiked ? "❤️ Wishlist" : "🤍 Wishlist"}
-                  {/* <p>🤍 Wishlist</p> */}
-                </button>
-              </div>
-            </div>
+        <div className="flex justify-center flex-col w-full h-auto mb-12 sm:max-w-[80rem] p-2">
+          <p className="px-5 text-xl font-bold text-gray-500">
+            Produk lain nya
+          </p>
+          <div className="grid items-center w-full grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5 justify-items-center">
+            {hasilProduk.map((item) => (
+              <CardProduk key={item.id} {...item} />
+            ))}
           </div>
         </div>
       </div>

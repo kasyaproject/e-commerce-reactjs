@@ -78,11 +78,11 @@ const carouselKategori = () => {
                       // Loading event
                       <div
                         role="status"
-                        class=" bg-gray-300 w-full rounded-t-lg h-full"
+                        className="w-full h-full bg-gray-300 rounded-t-lg "
                       >
-                        <div class="flex items-center justify-center w-full h-full animate-pulse bg-gray-300">
+                        <div className="flex items-center justify-center w-full h-full bg-gray-300 animate-pulse">
                           <svg
-                            class="w-24 h-24 text-gray-200"
+                            className="w-24 h-24 text-gray-200"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -103,7 +103,7 @@ const carouselKategori = () => {
 
                   <div className="flex justify-center w-full h-2/5 bg-blue-">
                     {loading ? (
-                      <div class="h-2.5 mt-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-4"></div>
+                      <div className="h-2.5 mt-4 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-4"></div>
                     ) : (
                       <h2 className="px-1 text-xs font-bold text-center text-gray-900 sm:mt-2 sm:text-base">
                         {kategori.title}

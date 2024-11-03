@@ -21,16 +21,16 @@ const cardProduk = ({
     <>
       <div className="flex flex-col justify-between w-full transition-transform duration-100 transform bg-white border border-gray-200 rounded-lg shadow shrink-0 sm:w-52 hover:scale-105 hover:shadow-lg">
         {/* Image */}
-        <Link to={`/produk/${id}`}>
+        <a href={`/produk?id=${id}&title=${title}`}>
           <img
             className="object-cover w-full rounded-t-lg h-44 sm:h-48"
             src={images[0]}
             alt=""
           />
-        </Link>
+        </a>
 
-        <Link
-          to={`/produk/${id}`}
+        <a
+          href={`/produk/${id}`}
           className="flex flex-col justify-between h-full p-2 "
         >
           {/* Tittle */}
@@ -54,7 +54,7 @@ const cardProduk = ({
               Rp {(price - (price * discount) / 100).toLocaleString("id-ID")}
             </p>
           </div>
-        </Link>
+        </a>
 
         {/* Like Button */}
         <div className="flex items-center justify-between px-2 pb-2">

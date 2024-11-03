@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     element: <WishlistPage />,
   },
   {
-    path: "/produk/:produkId",
+    path: "/produk",
     element: <ProdukPage />,
   },
   {

@@ -66,6 +66,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 120000,
+    stock: 100,
     discount: 15,
     rating: 4.5,
     count: 150,
@@ -88,6 +89,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 95000,
+    stock: 100,
     discount: 10,
     rating: 4.3,
     count: 200,
@@ -110,6 +112,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 180000,
+    stock: 100,
     discount: 20,
     rating: 4.6,
     count: 320,
@@ -132,6 +135,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 50000,
+    stock: 100,
     discount: 5,
     rating: 4.2,
     count: 410,
@@ -154,6 +158,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 130000,
+    stock: 100,
     discount: 12,
     rating: 4.4,
     count: 180,
@@ -176,6 +181,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 210000,
+    stock: 100,
     discount: 25,
     rating: 4.7,
     count: 240,
@@ -198,6 +204,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 160000,
+    stock: 100,
     discount: 18,
     rating: 4.3,
     count: 130,
@@ -220,6 +227,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 140000,
+    stock: 100,
     discount: 10,
     rating: 4.1,
     count: 370,
@@ -242,6 +250,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 300000,
+    stock: 100,
     discount: 20,
     rating: 4.6,
     count: 90,
@@ -264,6 +273,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 75000,
+    stock: 100,
     discount: 8,
     rating: 4.0,
     count: 210,
@@ -286,6 +296,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 110000,
+    stock: 100,
     discount: 10,
     rating: 4.5,
     count: 170,
@@ -308,6 +319,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 150000,
+    stock: 100,
     discount: 15,
     rating: 4.3,
     count: 150,
@@ -330,6 +342,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 85000,
+    stock: 100,
     discount: 7,
     rating: 4.2,
     count: 220,
@@ -352,6 +365,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 170000,
+    stock: 100,
     discount: 18,
     rating: 4.4,
     count: 250,
@@ -374,6 +388,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 65000,
+    stock: 100,
     discount: 5,
     rating: 4.3,
     count: 300,
@@ -396,6 +411,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 290000,
+    stock: 100,
     discount: 22,
     rating: 4.7,
     count: 85,
@@ -418,6 +434,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 70000,
+    stock: 100,
     discount: 10,
     rating: 4.1,
     count: 190,
@@ -440,6 +457,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 45000,
+    stock: 100,
     discount: 5,
     rating: 4.0,
     count: 260,
@@ -462,6 +480,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 30000,
+    stock: 100,
     discount: 5,
     rating: 4.5,
     count: 410,
@@ -484,6 +503,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 180000,
+    stock: 100,
     discount: 15,
     rating: 4.6,
     count: 150,
@@ -506,6 +526,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 120000,
+    stock: 100,
     discount: 15,
     rating: 4.3,
     count: 190,
@@ -528,6 +549,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 280000,
+    stock: 100,
     discount: 30,
     rating: 4.8,
     count: 320,
@@ -550,6 +572,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 130000,
+    stock: 100,
     discount: 8,
     rating: 4.1,
     count: 90,
@@ -572,6 +595,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 110000,
+    stock: 100,
     discount: 10,
     rating: 4.3,
     count: 190,
@@ -594,6 +618,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 220000,
+    stock: 100,
     discount: 18,
     rating: 4.6,
     count: 250,
@@ -616,6 +641,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 120000,
+    stock: 100,
     discount: 10,
     rating: 4.4,
     count: 170,
@@ -638,6 +664,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 145000,
+    stock: 100,
     discount: 15,
     rating: 4.2,
     count: 220,
@@ -660,6 +687,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 50000,
+    stock: 100,
     discount: 5,
     rating: 4.0,
     count: 320,
@@ -682,6 +710,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 70000,
+    stock: 100,
     discount: 7,
     rating: 4.1,
     count: 290,
@@ -704,6 +733,7 @@ const allproduk = [
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 320000,
+    stock: 100,
     discount: 25,
     rating: 4.7,
     count: 130,
@@ -725,6 +755,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 120000,
+    stock: 100,
     discount: 10,
     rating: 4.7,
     count: 130,
@@ -746,6 +777,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 75000,
+    stock: 100,
     discount: 15,
     rating: 4.6,
     count: 170,
@@ -767,6 +799,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 100000,
+    stock: 100,
     discount: 12,
     rating: 4.4,
     count: 190,
@@ -788,6 +821,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 180000,
+    stock: 100,
     discount: 20,
     rating: 4.8,
     count: 110,
@@ -809,6 +843,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 85000,
+    stock: 100,
     discount: 5,
     rating: 4.5,
     count: 220,
@@ -830,6 +865,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 40000,
+    stock: 100,
     discount: 10,
     rating: 4.3,
     count: 250,
@@ -851,6 +887,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 65000,
+    stock: 100,
     discount: 8,
     rating: 4.4,
     count: 210,
@@ -872,6 +909,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 75000,
+    stock: 100,
     discount: 10,
     rating: 4.6,
     count: 300,
@@ -893,6 +931,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 55000,
+    stock: 100,
     discount: 5,
     rating: 4.2,
     count: 150,
@@ -914,6 +953,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 95000,
+    stock: 100,
     discount: 10,
     rating: 4.5,
     count: 190,
@@ -935,6 +975,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 45000,
+    stock: 100,
     discount: 5,
     rating: 4.3,
     count: 250,
@@ -956,6 +997,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 125000,
+    stock: 100,
     discount: 20,
     rating: 4.7,
     count: 150,
@@ -977,6 +1019,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 175000,
+    stock: 100,
     discount: 15,
     rating: 4.6,
     count: 130,
@@ -998,6 +1041,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 30000,
+    stock: 100,
     discount: 5,
     rating: 4.2,
     count: 270,
@@ -1019,6 +1063,7 @@ const allproduk = [
       "../assets/react.svg",
     ],
     price: 120000,
+    stock: 100,
     discount: 10,
     rating: 4.5,
     count: 180,
@@ -1029,6 +1074,44 @@ const allproduk = [
     ratingcount: 50,
     description:
       "Dress panjang dengan desain elegan, cocok untuk acara formal dan pesta.",
+  },
+];
+
+const ulasanproduk = [
+  {
+    id: 1,
+    content: "Produk hebat!",
+    rating: 5,
+    reviewer: "Andika",
+    date: "2024-11-01",
+  },
+  {
+    id: 2,
+    content: "Nilai bagus untuk uang.",
+    rating: 4,
+    reviewer: "Budi",
+    date: "2024-10-28",
+  },
+  {
+    id: 3,
+    content: "Kualitas rata-rata.",
+    rating: 3,
+    reviewer: "Sari",
+    date: "2024-10-25",
+  },
+  {
+    id: 4,
+    content: "Tidak sesuai harapan.",
+    rating: 2,
+    reviewer: "Dewi",
+    date: "2024-10-20",
+  },
+  {
+    id: 5,
+    content: "Pengalaman yang buruk.",
+    rating: 1,
+    reviewer: "Joko",
+    date: "2024-10-15",
   },
 ];
 
@@ -1071,4 +1154,4 @@ const pengiriman = [
   },
 ];
 
-export { allproduk, promocarousel, kategoriproduk, pengiriman };
+export { allproduk, promocarousel, kategoriproduk, ulasanproduk, pengiriman };
