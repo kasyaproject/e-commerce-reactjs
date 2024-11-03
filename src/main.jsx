@@ -6,6 +6,10 @@ import HomePage from "./page/home.jsx";
 import LoginPage from "./page/login-page.jsx";
 import ErrorPage from "./page/error-page.jsx";
 import ProdukPage from "./page/produk.jsx";
+import EtalasePage from "./page/etalase.jsx";
+import PromoPage from "./page/promo.jsx";
+import KeranjangPage from "./page/keranjang.jsx";
+import WishlistPage from "./page/wishlist.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -20,20 +24,24 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: "/produk",
-    element: <ProdukPage />,
+    path: "/keranjang",
+    element: <KeranjangPage />,
+  },
+  {
+    path: "/wishlist",
+    element: <WishlistPage />,
   },
   {
     path: "/produk/:produkId",
     element: <ProdukPage />,
   },
   {
-    path: "/etalase/:produkI",
-    element: <ProdukPage />,
+    path: "/etalase/:etalaseId",
+    element: <EtalasePage />,
   },
   {
     path: "/promo/:promoId",
-    element: <ProdukPage />,
+    element: <PromoPage />,
   },
 ]);
 
