@@ -2,22 +2,22 @@ const promocarousel = [
   {
     id: 1,
     title: "Promo Flase Sale 9.9",
-    image: "/src/assets/promo/1.jpeg",
+    image: "/public/assets/promo/1.jpeg",
   },
   {
     id: 2,
     title: "Diskon 50%",
-    image: "/src/assets/promo/2.jpeg",
+    image: "/public/assets/promo/2.jpeg",
   },
   {
     id: 3,
     title: "Cashback sampe 100rb",
-    image: "/src/assets/promo/3.jpeg",
+    image: "/public/assets/promo/3.jpeg",
   },
   {
     id: 4,
     title: "Cashback sampe 100rb",
-    image: "/src/assets/promo/nightSky.png",
+    image: "/public/assets/promo/nightSky.png",
   },
 ];
 
@@ -25,22 +25,22 @@ const kategoriproduk = [
   {
     id: 1,
     title: "Pakaian Pria",
-    image: "/src/assets/Kasya_Store.png",
+    image: "/public/assets/Kasya_Store.png",
   },
   {
     id: 2,
     title: "Pakaian Wanita",
-    image: "/src/assets/Kasya_Store.png",
+    image: "/public/assets/Kasya_Store.png",
   },
   {
     id: 3,
     title: "Pakaian Unisex",
-    image: "/src/assets/Kasya_Store.png",
+    image: "/public/assets/Kasya_Store.png",
   },
   {
     id: 4,
     title: "Pakaian Olahraga",
-    image: "/src/assets/Kasya_Store.png",
+    image: "/public/assets/Kasya_Store.png",
   },
 ];
 
@@ -49,10 +49,10 @@ const allproduk = [
     id: "1",
     title: "Kemeja Flanel Pria",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 120000,
@@ -71,10 +71,10 @@ const allproduk = [
     id: "2",
     title: "Blouse Wanita Modern",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 95000,
@@ -93,10 +93,10 @@ const allproduk = [
     id: "3",
     title: "Jaket Denim Casual",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 180000,
@@ -115,10 +115,10 @@ const allproduk = [
     id: "4",
     title: "Kaos Polos Basic",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 50000,
@@ -137,10 +137,10 @@ const allproduk = [
     id: "5",
     title: "Celana Chino Slim Fit",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 130000,
@@ -159,10 +159,10 @@ const allproduk = [
     id: "6",
     title: "Dress Wanita Elegan",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 210000,
@@ -181,10 +181,10 @@ const allproduk = [
     id: "7",
     title: "Sweater Rajut Oversize",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 160000,
@@ -203,10 +203,10 @@ const allproduk = [
     id: "8",
     title: "Hoodie Zipper Unisex",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 140000,
@@ -225,10 +225,10 @@ const allproduk = [
     id: "9",
     title: "Setelan Jas Formal Pria",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 300000,
@@ -247,10 +247,10 @@ const allproduk = [
     id: "10",
     title: "Kaos Olahraga Breathable",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 75000,
@@ -269,10 +269,10 @@ const allproduk = [
     id: "11",
     title: "Rok Mini A-Line",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 110000,
@@ -291,10 +291,10 @@ const allproduk = [
     id: "12",
     title: "Kemeja Batik Lengan Panjang",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 150000,
@@ -313,10 +313,10 @@ const allproduk = [
     id: "13",
     title: "Polo Shirt Casual",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 85000,
@@ -335,10 +335,10 @@ const allproduk = [
     id: "14",
     title: "Celana Jeans Slim Fit",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 170000,
@@ -357,10 +357,10 @@ const allproduk = [
     id: "15",
     title: "Tank Top Olahraga",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 65000,
@@ -379,10 +379,10 @@ const allproduk = [
     id: "16",
     title: "Gaun Pesta Long Dress",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 290000,
@@ -401,10 +401,10 @@ const allproduk = [
     id: "17",
     title: "Celana Pendek Santai",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 70000,
@@ -423,10 +423,10 @@ const allproduk = [
     id: "18",
     title: "Topi Beanie Hangat",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 45000,
@@ -445,10 +445,10 @@ const allproduk = [
     id: "19",
     title: "Kaus Kaki Polos 3 Pasang",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 30000,
@@ -467,10 +467,10 @@ const allproduk = [
     id: "20",
     title: "Blazer Wanita Slim Fit",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 180000,
@@ -489,10 +489,10 @@ const allproduk = [
     id: "21",
     title: "Celana Training Jogger",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 120000,
@@ -511,10 +511,10 @@ const allproduk = [
     id: "22",
     title: "Sepatu Sneakers Casual",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 280000,
@@ -533,10 +533,10 @@ const allproduk = [
     id: "23",
     title: "Rompi Pria Dasi",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 130000,
@@ -555,10 +555,10 @@ const allproduk = [
     id: "24",
     title: "Kemeja Slim Fit Polos",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 110000,
@@ -577,10 +577,10 @@ const allproduk = [
     id: "25",
     title: "Setelan Olahraga Tracksuit",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 220000,
@@ -599,10 +599,10 @@ const allproduk = [
     id: "26",
     title: "Blouse Motif Floral",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 120000,
@@ -621,10 +621,10 @@ const allproduk = [
     id: "27",
     title: "Sweater Hoodie Polos",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 145000,
@@ -643,10 +643,10 @@ const allproduk = [
     id: "28",
     title: "Topi Baseball Snapback",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 50000,
@@ -665,10 +665,10 @@ const allproduk = [
     id: "29",
     title: "Kacamata Hitam Aviator",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 70000,
@@ -687,10 +687,10 @@ const allproduk = [
     id: "30",
     title: "Sepatu Formal Kulit",
     images: [
-      "/src/assets/produk/default-product.png",
-      "/src/assets/nightSky.png",
-      "/src/assets/Kasya_Store.png",
-      "/src/assets/react.svg",
+      "/public/assets/produk/default-product.png",
+      "/public/assets/nightSky.png",
+      "/public/assets/Kasya_Store.png",
+      "/public/assets/react.svg",
       // Tambahkan lebih banyak gambar sesuai kebutuhan
     ],
     price: 320000,
