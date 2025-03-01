@@ -1,10 +1,10 @@
 // Import componenets
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import AllProduk from "../components/all-produk";
-import CarouselPromo from "../components/carousel-promo";
-import CarouselPopuler from "../components/carousel-populer";
-import CarouselKategori from "../components/carousel-kategori";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
+import AllProduk from "../../components/all-produk";
+import CarouselPromo from "../../components/carousel-promo";
+import CarouselPopuler from "../../components/carousel-populer";
+import CarouselKategori from "../../components/carousel-kategori";
 
 const Home = () => {
   return (

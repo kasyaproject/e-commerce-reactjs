@@ -55,7 +55,7 @@ const carouselPopuler = () => {
         <div className="flex gap-4 p-3" id="carouselItems-populer">
           {/* Card */}
           {allproduk
-            .sort((a, b) => b.count - a.count)
+            .sort((a, b) => b.pembelian - a.pembelian)
             .slice(0, 10)
             .map((produk) => (
               <CardPromo key={produk.id} {...produk} />

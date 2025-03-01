@@ -1,6 +1,19 @@
 // import pengiriman from "../data";
+import React from "react";
+import {
+  ModalHeader,
+  ModalDescription,
+  ModalContent,
+  ModalActions,
+  Button,
+  Header,
+  Image,
+  Modal,
+} from "semantic-ui-react";
 
 const pilihanPengiriman = () => {
+  const [open, setOpen] = React.useState(false);
+
   return (
     <>
       {/* Dikirim dari */}
@@ -40,9 +53,51 @@ const pilihanPengiriman = () => {
 
       {/* Button pilih kurir */}
       <div className="flex justify-end w-full ">
-        <button className="font-semibold text-blue-500">
-          Lihat Pilihan Kurir
-        </button>
+        <Modal
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
+          trigger={
+            <span className="font-extrabold text-blue-500 cursor-pointer">
+              Pilihan Pengiriman
+            </span>
+          }
+        >
+          <ModalHeader>Simulasi Pengiriman</ModalHeader>
+          <ModalContent image className="">
+            <div className="w-1/3 p-6 mr-10 border-2 rounded-lg h-80">
+              <div className="flex items-center gap-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-geo-alt"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+                  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                </svg>
+                <span className="font-semibold text-gray-500">
+                  Dikirim dari
+                </span>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-1 h-full bg-gray-500"></div>
+                <span>Kota Administrasi Jakarta Timur</span>
+              </div>
+            </div>
+            <ModalDescription>
+              <Header>Default Profile Image</Header>
+              <p>
+                We've found the following gravatar image associated with your
+                e-mail address.
+              </p>
+              <p>Is it okay to use this photo?</p>
+            </ModalDescription>
+          </ModalContent>
+        </Modal>
       </div>
     </>
   );

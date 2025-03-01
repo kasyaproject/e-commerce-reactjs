@@ -1,11 +1,86 @@
 import Logo from "../assets/Kasya_Store.png";
+import _ from "lodash";
+import React from "react";
+import { allproduk } from "../data/index";
+import { Link } from "react-router-dom";
+import { GridColumn, Search, Grid } from "semantic-ui-react";
+
+const source = allproduk;
+
+const initialState = {
+  loading: false,
+  results: [],
+  value: "",
+};
+
+function exampleReducer(state, action) {
+  switch (action.type) {
+    case "CLEAN_QUERY":
+      return initialState;
+    case "START_SEARCH":
+      return { ...state, loading: true, value: action.query };
+    case "FINISH_SEARCH":
+      return { ...state, loading: false, results: action.results };
+    case "UPDATE_SELECTION":
+      return { ...state, value: action.selection };
+
+    default:
+      throw new Error();
+  }
+}
 
 const Navbar = () => {
+  const [state, dispatch] = React.useReducer(exampleReducer, initialState);
+  const { loading, results, value } = state;
+  const [oldValue, setOldValue] = React.useState("");
+
+  const timeoutRef = React.useRef();
+  const handleSearchChange = React.useCallback(
+    (e, data) => {
+      clearTimeout(timeoutRef.current);
+      setOldValue(value);
+      dispatch({ type: "START_SEARCH", query: data.value });
+
+      timeoutRef.current = setTimeout(() => {
+        if (data.value.length === 0) {
+          dispatch({ type: "CLEAN_QUERY" });
+          return;
+        }
+
+        const re = new RegExp(_.escapeRegExp(data.value), "i");
+        const isMatch = (result) => re.test(result.title);
+
+        // Limit to the first 10 matching results
+        // const filteredResults = _.take(_.filter(source, isMatch), 10);
+        const filteredResults = _.take(
+          _.filter(source, isMatch).map((result) => ({
+            title: result.title,
+            price: result.price, // Add price
+            description: result.description, // Add description
+            href: `/produk/${result.slug}`, // Use template literal to dynamically set the href
+          })),
+          10
+        );
+
+        dispatch({
+          type: "FINISH_SEARCH",
+          results: filteredResults,
+        });
+      }, 300);
+    },
+    [value]
+  );
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
   return (
-    <div className="sticky top-0 z-50 w-full">
+    <div className="sticky top-0 z-10 w-full">
       <div className="flex items-center justify-between w-full px-4 py-1 bg-white shadow sm:py-2 sm:gap-4 sm:px-8">
         {/* Logo */}
-        <a href={"/"} className="flex items-center sm:mr-10">
+        <a href={"/"} className="items-center hidden sm:flex sm:mr-10">
           <img src={Logo} alt="logo" className="w-8 h-8 sm:w-16 sm:h-16" />
           <p className="hidden text-2xl font-extrabold text-black sm:block">
             E-Commerce
@@ -13,139 +88,62 @@ const Navbar = () => {
         </a>
 
         {/* Search input */}
-        <div className="w-1/2 sm:w-[40%] p-1">
-          <form className="w-full mx-auto">
-            <div className="flex">
-              <label
-                htmlFor="search-dropdown"
-                className="mb-2 text-sm font-medium text-gray-900 sr-only"
-              >
-                Cari di aplikasi
-              </label>
+        <div className="w-1/2 flex items-center justify-center sm:w-[40%] p-1">
+          <Grid>
+            <GridColumn width={16}>
+              <Search
+                loading={loading}
+                placeholder="Cari Produk..."
+                onResultSelect={(e, data) =>
+                  dispatch({
+                    type: "UPDATE_SELECTION",
+                    selection: data.result.title,
+                  })
+                }
+                onSearchChange={handleSearchChange}
+                results={results}
+                value={value}
+              />
+            </GridColumn>
+          </Grid>
 
-              {/* Button Kategori */}
-              <button
-                id="dropdown-button"
-                data-dropdown-toggle="dropdown"
-                className="flex-shrink-0 z-10 hidden sm:inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:outline-none"
-                type="button"
-              >
-                All categories{" "}
+          <div className="items-center justify-center hidden gap-6 mx-3 sm:flex">
+            {/* Button Keranjang */}
+            <Link to="/keranjang">
+              <div className="relative">
                 <svg
-                  className="w-2.5 h-2.5 ms-2.5"
-                  aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
+                  fill="currentColor"
+                  className="w-8 h-8 bi bi-cart4"
+                  viewBox="0 0 16 16"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 4 4 4-4"
-                  />
+                  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
                 </svg>
-              </button>
 
-              {/* Dropdwon Kategori */}
-              <div
-                id="dropdown"
-                className="z-10 hidden w-full bg-white divide-y divide-gray-100 rounded-b-lg shadow"
-              >
-                <div className="flex justify-center w-full px-10 py-1 h-96">
-                  <div className="flex w-4/5 px-6 overflow-y-auto bg-blue-500">
-                    <div className="w-1/4 bg-yellow-100">
-                      <ul
-                        className="text-sm text-gray-700"
-                        aria-labelledby="dropdown-button"
-                      >
-                        <p className="inline-flex w-full px-4 py-2 text-base font-semibold text-black">
-                          Mockups
-                        </p>
-
-                        <li>
-                          <button
-                            type="button"
-                            className="inline-flex w-full px-4 py-2 hover:text-black hover:font-semibold"
-                          >
-                            Mockups
-                          </button>
-                        </li>
-                        {/* Tambahkan item lainnya di sini */}
-                      </ul>
-                    </div>
-
-                    <div className="w-3/4 bg-red-100">
-                      <div className="grid w-full grid-cols-3">
-                        {/*  */}
-                        <div>
-                          <ul
-                            className="text-sm text-gray-700"
-                            aria-labelledby="dropdown-button"
-                          >
-                            <li>
-                              <button
-                                type="button"
-                                className="inline-flex w-full px-4 py-2 hover:text-black hover:font-semibold"
-                              >
-                                Mockups
-                              </button>
-                            </li>
-                            {/* Tambahkan item lainnya di sini */}
-                          </ul>
-                        </div>
-                        {/*  */}
-                        <div>
-                          <ul
-                            className="text-sm text-gray-700"
-                            aria-labelledby="dropdown-button"
-                          >
-                            <li>
-                              <button
-                                type="button"
-                                className="inline-flex w-full px-4 py-2 hover:text-black hover:font-semibold"
-                              >
-                                Mockups
-                              </button>
-                            </li>
-                            {/* Tambahkan item lainnya di sini */}
-                          </ul>
-                          {/*  */}
-                        </div>
-                        <div>
-                          <ul
-                            className="text-sm text-gray-700"
-                            aria-labelledby="dropdown-button"
-                          >
-                            <li>
-                              <button
-                                type="button"
-                                className="inline-flex w-full px-4 py-2 hover:text-black hover:font-semibold"
-                              >
-                                Mockups
-                              </button>
-                            </li>
-                            {/* Tambahkan item lainnya di sini */}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <span className="absolute top-0 right-0 px-1 text-xs text-white bg-red-500 rounded-full">
+                  1 {/* Jumlah item di keranjang */}
+                </span>
               </div>
+            </Link>
 
-              {/* Search Input */}
-              <div className="relative w-full">
-                <input
-                  type="search"
-                  className="block p-1 sm:p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg sm:rounded-e-lg sm:border-s-gray-50 pl-3 sm:pl-7 sm:-ml-4 sm:border-s-2 border focus:ring-0 outline-none border-gray-300"
-                  placeholder="Search..."
-                  autoComplete="off"
-                />
+            {/* Button Wishlist */}
+            <Link to="/wishlist">
+              <div className="relative">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  className="w-8 h-8 bi bi-bag-heart-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
+                </svg>
+
+                <span className="absolute top-0 right-0 px-1 text-xs text-white bg-red-500 rounded-full">
+                  1 {/* Jumlah item di wishlist */}
+                </span>
               </div>
-            </div>
-          </form>
+            </Link>
+          </div>
         </div>
 
         {/* Button section */}
@@ -157,6 +155,9 @@ const Navbar = () => {
           >
             Masuk
           </a>
+
+          {/*  */}
+          <div className="flex md:order-2"></div>
         </div>
       </div>
     </div>

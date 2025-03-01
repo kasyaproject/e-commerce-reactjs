@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 const cardProduk = ({
   id,
   title,
+  slug,
   images,
   price,
   discount,
   rating,
-  count,
+  pembelian,
   wishlist,
 }) => {
   const [isLiked, setIsLiked] = useState(wishlist === "true");
@@ -21,7 +22,7 @@ const cardProduk = ({
     <>
       <div className="flex flex-col justify-between w-full transition-transform duration-100 transform bg-white border border-gray-200 rounded-lg shadow shrink-0 sm:w-52 hover:scale-105 hover:shadow-lg">
         {/* Image */}
-        <a href={`/produk?id=${id}&title=${title}`}>
+        <a href={`/produk/${slug}`}>
           <img
             className="object-cover w-full rounded-t-lg h-44 sm:h-48"
             src={images[0]}
@@ -30,7 +31,7 @@ const cardProduk = ({
         </a>
 
         <a
-          href={`/produk/${id}`}
+          href={`/produk/${slug}`}
           className="flex flex-col justify-between h-full p-2 "
         >
           {/* Tittle */}
@@ -76,7 +77,7 @@ const cardProduk = ({
                 />
               </svg>
               <p className="text-xs text-gray-700 sm:text-sm font-sm ">
-                {rating} | {count} Terjual
+                {rating} | {pembelian} Terjual
               </p>
             </div>
           </div>

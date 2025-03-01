@@ -70,7 +70,7 @@ const carouselKategori = () => {
             .map((kategori) => (
               <div key={kategori.id} {...kategori}>
                 <Link
-                  to={`/etalase/${kategori.id}`}
+                  to={`/etalase/${kategori.title}`}
                   className="flex flex-col items-center justify-between w-24 h-24 transition-transform duration-300 transform border-2 sm:w-40 sm:h-40 rounded-2xl hover:scale-105"
                 >
                   <div className="flex items-center justify-center w-full bg-blue- h-4/5">
@@ -82,7 +82,7 @@ const carouselKategori = () => {
                       >
                         <div className="flex items-center justify-center w-full h-full bg-gray-300 animate-pulse">
                           <svg
-                            className="w-24 h-24 text-gray-200"
+                            className="w-12 h-12 text-gray-200 sm:w-24 sm:h-24"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -96,7 +96,7 @@ const carouselKategori = () => {
                       <img
                         src={kategori.image}
                         alt={kategori.title}
-                        className="object-cover object-center w-24 h-24"
+                        className="object-cover object-center w-12 h-12 sm:w-24 sm:h-24"
                       />
                     )}
                   </div>

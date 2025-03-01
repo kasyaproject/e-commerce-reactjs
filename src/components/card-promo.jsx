@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const cardPromo = ({ id, title, images, price, discount, rating, count }) => {
+const cardPromo = ({
+  id,
+  slug,
+  title,
+  images,
+  price,
+  discount,
+  rating,
+  pembelian,
+}) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +26,7 @@ const cardPromo = ({ id, title, images, price, discount, rating, count }) => {
   return (
     <>
       <Link
-        to={`/produk/${id}`}
+        to={`/produk/${slug}`}
         className="flex flex-col justify-between w-32 transition-transform duration-100 transform bg-white border border-gray-200 rounded-lg shadow shrink-0 sm:w-40 hover:scale-105 hover:shadow-lg"
       >
         {/* Image */}
@@ -93,7 +102,7 @@ const cardPromo = ({ id, title, images, price, discount, rating, count }) => {
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
                 <p className="text-xs text-gray-700 sm:text-sm font-sm ">
-                  {rating} | {count} Terjual
+                  {rating} | {pembelian} Terjual
                 </p>
               </div>
             )}

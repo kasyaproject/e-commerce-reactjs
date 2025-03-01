@@ -16,7 +16,7 @@ const timeAgo = (dateString) => {
 const cardUlasan = ({ review }) => {
   return (
     <div className="p-2 bg-blue-">
-      <div className="flex items-center gap-2 mb-2">
+      <div className="flex items-center justify-between gap-2 mb-2 sm:justify-start">
         <Rating
           defaultRating={review.rating}
           icon="star"

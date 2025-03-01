@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { kategoriproduk } from "../data";
+import { allproduk } from "../../data";
 
 const EtalaseProduk = () => {
-  const { etalaseId } = useParams();
+  const { etalaseName } = useParams();
   // Ambil data berdasarkan id Kategori
-  const etalase = kategoriproduk.find((data) => data.id === etalaseId);
+  const etalase = allproduk.filter((data) =>
+    data.kategori.some((kategori) => kategori === etalaseName)
+  );
 
+  console.log("params :", etalaseName);
   console.log("data :", etalase);
 
   return (
     <>
       {etalase ? (
         <p>
-          Etalase : {etalase.id} - {etalase.title}
+          Etalase : {etalaseName} - {etalase.length} data
         </p>
       ) : (
         <p>Data tidak ditemukan</p>

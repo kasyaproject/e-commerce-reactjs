@@ -23,10 +23,12 @@ const allProduk = () => {
   }, []);
 
   // Pagination
+  const shuffledData = [...allproduk].sort((a, b) => b.pembelian - a.pembelian);
+
   useEffect(() => {
     const startIndex = (activePage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    setPaginatedData(allproduk.slice(startIndex, endIndex));
+    setPaginatedData(shuffledData.slice(startIndex, endIndex));
   }, [activePage]);
 
   const handlePaginationChange = (e, { activePage }) =>

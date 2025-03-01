@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Dropdown } from "semantic-ui-react";
-import { Link, useLocation } from "react-router-dom";
+import { Dropdown, ButtonGroup, Button } from "semantic-ui-react";
+import { Link, useParams } from "react-router-dom";
 
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
@@ -31,17 +31,19 @@ const friendOptions = [
 ];
 
 const produk = () => {
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
-  const produkId = query.get("id");
+  const [selectedSize, setSelectedSize] = useState("");
+  const { slug } = useParams(); // Mengambil ID dari URL
+  console.log("id produk :".slug);
+  const produk = allproduk.find((item) => item.slug === slug);
 
-  // Ambil data berdasarkan id
-  const produk = allproduk.find((item) => item.id === produkId);
+  const handleSizeSelect = (size) => {
+    setSelectedSize(size); // Store the selected size
+  };
 
   const kategori = produk.kategori;
   // Filter data berdasarkan kategori yang sama dan selain yang di lihat
   const produkTerkait = allproduk.filter(
-    (item) => item.kategori === kategori && item.id !== produkId
+    (item) => item.kategori === kategori && item.slug !== slug
   );
   // Jika produk lainnya kurang dari 5
   let produkLainnya = [];
@@ -133,10 +135,10 @@ const produk = () => {
                       <path stroke="currentColor" d="m1 9 4-4-4-4" />
                     </svg>
                     <Link
-                      to={"/"}
+                      to={`/etalase/${produk.kategori}`}
                       className="text-sm font-medium text-gray-700 ms-1 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
                     >
-                      kategori
+                      {produk.kategori}
                     </Link>
                   </div>
                 </li>
@@ -181,7 +183,10 @@ const produk = () => {
               <div className="w-full sm:w-[60%] h-auto">
                 <div className="p-2 sm:px-8 bg-yellow-">
                   {/* Judul */}
-                  <h2>{produk.title}</h2>
+                  <h2>
+                    {produk.title}
+                    {selectedSize ? " - " + selectedSize : ""}
+                  </h2>
 
                   {/* Statistik */}
                   <div className="flex gap-4">
@@ -211,36 +216,43 @@ const produk = () => {
                   </div>
 
                   {/* HArga */}
-                  <div>
+                  <div className="mb-4">
                     <p className="text-[25px] font-bold">
-                      Rp. {produk.price.toLocaleString("id-ID")}
+                      Rp.{" "}
+                      {(
+                        produk.price -
+                        (produk.price * produk.discount) / 100
+                      ).toLocaleString("id-ID")}
                     </p>
                     <div className="flex gap-2 -mt-6">
                       <p className="px-1 rounded-md font-semibold py-0.5 text-sm text-red-700 bg-red-300 ">
                         {produk.discount}%
                       </p>
                       <p className="font-semibold text-gray-400 line-through">
-                        Rp.{" "}
-                        {(
-                          produk.price -
-                          (produk.price * produk.discount) / 100
-                        ).toLocaleString("id-ID")}
+                        Rp. {produk.price.toLocaleString("id-ID")}
                       </p>
                     </div>
                   </div>
 
-                  <hr className="h-px my-2 bg-gray-200 border-0" />
+                  <ButtonGroup>
+                    {produk.variants.map((variant) => (
+                      <Button
+                        key={variant}
+                        onClick={() => handleSizeSelect(variant)}
+                      >
+                        {variant}
+                      </Button>
+                    ))}
+                  </ButtonGroup>
 
+                  <hr className="h-px my-2 bg-gray-200 border-0" />
                   {/* Descripsi Produk */}
                   <div>
                     <p className="text-2xl font-bold">Description</p>
                     <p className="-mt-2 text-lg">{produk.description}</p>
                   </div>
-
-                  <hr className="h-px my-4 bg-gray-200 border-0" />
-
                   {/* Pengiriman */}
-                  <div>
+                  <div className="hidden">
                     <p className="text-xl font-bold">Pengiriman</p>
 
                     <Pengiriman />
@@ -251,6 +263,7 @@ const produk = () => {
 
             <hr className="h-px my-4 bg-gray-300 border-0" />
 
+            {/* Ulasan */}
             <div className="w-full p-2 mt-10 sm:flex">
               <div className="w-full sm:sticky sm:w-1/3 h-max top-24">
                 <p className="text-xl font-bold">ULASAN PEMBELI</p>
